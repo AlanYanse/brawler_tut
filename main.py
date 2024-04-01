@@ -33,10 +33,16 @@ WARRIOR_SIZE = 162
 WARRIOR_SCALE = 4
 WARRIOR_OFFSET = [72, 56]
 WARRIOR_DATA = [WARRIOR_SIZE, WARRIOR_SCALE, WARRIOR_OFFSET]
+
 WIZARD_SIZE = 250
 WIZARD_SCALE = 3
 WIZARD_OFFSET = [112, 107]
 WIZARD_DATA = [WIZARD_SIZE, WIZARD_SCALE, WIZARD_OFFSET]
+
+DIO_SIZE = 180
+DIO_SCALE = 1
+DIO_OFFSET = [80, -10] # Controla lo que sobrepasa de la pantalla en x y en ye
+DIO_DATA = [DIO_SIZE, DIO_SCALE, DIO_OFFSET]
 
 #load music and sounds
 pygame.mixer.music.load("assets/audio/music.mp3")
@@ -53,6 +59,7 @@ bg_image = pygame.image.load("assets/images/background/background.jpg").convert_
 #load spritesheets
 warrior_sheet = pygame.image.load("assets/images/Characters/warrior/Sprites/warrior.png").convert_alpha()
 wizard_sheet = pygame.image.load("assets/images/Characters/wizard/Sprites/wizard.png").convert_alpha()
+dio_sheet = pygame.image.load("assets/images/Characters/dio/Sprites/sprite-dio.png").convert_alpha()
 
 #load vicory image
 victory_img = pygame.image.load("assets/images/icons/victory.png").convert_alpha()
@@ -60,6 +67,8 @@ victory_img = pygame.image.load("assets/images/icons/victory.png").convert_alpha
 #define number of steps in each animation
 WARRIOR_ANIMATION_STEPS = [10, 8, 1, 7, 7, 3, 7]
 WIZARD_ANIMATION_STEPS = [8, 8, 1, 8, 8, 3, 7]
+#DIO_ANIMATION_STEPS = [4, 4, 1, 4, 4, 3, 4]
+DIO_ANIMATION_STEPS = [4, 4, 1, 1, 1, 1, 1]
 
 #define font
 count_font = pygame.font.Font("assets/fonts/turok.ttf", 80)
@@ -85,7 +94,8 @@ def draw_health_bar(health, x, y):
 
 #create two instances of fighters
 fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA, warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
-fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+#fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA, wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+fighter_2 = Fighter(2, 700, 310, True, DIO_DATA, dio_sheet, DIO_ANIMATION_STEPS, magic_fx)
 
 #game loop
 run = True
